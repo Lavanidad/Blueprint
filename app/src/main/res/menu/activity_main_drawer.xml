@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_github"
+            android:icon="@mipmap/github"
+            android:title="Github"/>
+        <item
+            android:id="@+id/nav_wechat"
+            android:icon="@mipmap/wechat"
+            android:title="联系"/>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@mipmap/about"
+            android:title="关于"/>
+    </group>
+</menu>
