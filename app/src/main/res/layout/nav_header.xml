@@ -7,23 +7,26 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/nav_header_bg"
+        android:background="@mipmap/nav_header_bg2"
         android:scaleType="centerCrop"/>
 
-    <ImageView
+    <com.deepspring.blueprint.view.CircleImageView
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="36dp"
-        android:padding="8dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginStart="12dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_avatar"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:padding="16dp"
-        android:text="弱小"
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:text="Lavanidad"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
 </FrameLayout>
