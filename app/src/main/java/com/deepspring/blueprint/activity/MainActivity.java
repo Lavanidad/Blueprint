@@ -40,6 +40,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         return R.layout.activity_main;
     }
 
+    //testtest
+
     @Override
     protected void initViews(){
         super.initViews();
