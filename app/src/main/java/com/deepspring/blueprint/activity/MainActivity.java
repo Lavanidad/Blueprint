@@ -1,8 +1,14 @@
 package com.deepspring.blueprint.activity;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 
@@ -14,6 +20,8 @@ import com.deepspring.blueprint.fragment.DailyFragment;
 import com.deepspring.blueprint.fragment.MapFragment;
 import com.deepspring.blueprint.fragment.UserFragment;
 
+
+import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +46,14 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     @Override
     protected void initViews(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            try {
+                Class decorViewClazz = Class.forName("com.android.internal.policy.DecorView");
+                Field field = decorViewClazz.getDeclaredField("mSemiTransparentStatusBarColor");
+                field.setAccessible(true);
+                field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));  //改为透明
+            } catch (Exception e) {}
+        }
         super.initViews();
         InitNavigationBar();
         ButterKnife.bind(this);
