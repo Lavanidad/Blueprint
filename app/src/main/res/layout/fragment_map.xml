@@ -1,15 +1,95 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.deepspring.blueprint.fragment.MapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:elevation="0dp">
+
+            <!--todo:左边一个天气空间 和 右边的步数按钮，点击可以跳转AC-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_name"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ToolbarPopupTheme">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="运动"
-        android:background="@color/colorAccent"/>
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/tv_pick_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="长按切换栏目"
+                android:textColor="@color/diy_white"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/icon_toolbar_custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_nav"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/icon_toolbar_custom"
+                android:paddingRight="12dp"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabMaxWidth="61dp"
+                app:tabMode="scrollable"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/tab_text_normal" />
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
+
+    <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/tab_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="100dp"-->
+        <!--android:visibility="invisible" />-->
+
+    <!--<com.danmo.ithouse.widget.CustomSearchView-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:id="@+id/view_custom_search"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:visibility="invisible" />-->
+
+</android.support.design.widget.CoordinatorLayout>
