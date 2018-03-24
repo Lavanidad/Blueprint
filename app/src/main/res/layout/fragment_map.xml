@@ -70,10 +70,10 @@
                     android:layout_height="match_parent"
                     android:text="骑行" />
 
-                <android.support.design.widget.TabItem
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="健走" />
+                <!--<android.support.design.widget.TabItem-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="健走" />-->
 
             </android.support.design.widget.TabLayout>
         </RelativeLayout>
@@ -85,18 +85,5 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>
 
-    <!--<android.support.design.widget.TabLayout-->
-        <!--android:id="@+id/tab_layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginTop="100dp"-->
-        <!--android:visibility="invisible" />-->
-
-    <!--<com.danmo.ithouse.widget.CustomSearchView-->
-        <!--android:layout_margin="5dp"-->
-        <!--android:id="@+id/view_custom_search"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:visibility="invisible" />-->
 
 </android.support.design.widget.CoordinatorLayout>

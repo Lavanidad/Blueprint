@@ -13,21 +13,16 @@ import android.view.ViewGroup;
 
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
-import com.deepspring.blueprint.base.BaseFragment;
-import com.deepspring.blueprint.base.ViewHolder;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 public class MapFragment extends Fragment {
-    private Context mContext;
-    private TabLayout mTabNav;
-    private ViewPager mViewPager;
 
-    public MapFragment() {
-    }
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
+    private Toolbar mToolbar;
+    private String[] tabTitle = {"跑步","骑行"};
+    private Context mContext;
+
 
     public static MapFragment newInstance(String title) {
         MapFragment fragment = new MapFragment();
@@ -44,21 +39,38 @@ public class MapFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        initViews(rootView);
         return rootView;
     }
 
 
-    protected void initViews(ViewHolder holder, View root) {
-        mTabNav = holder.get(R.id.tab_nav);
-        mViewPager = holder.get(R.id.viewpager);
-        Toolbar mToolbar = holder.get(R.id.toolbar);
+    protected void initViews(View rootView) {
+        mTabLayout = rootView.findViewById(R.id.tab_nav);
+        mViewPager = rootView.findViewById(R.id.viewpager);
+        mToolbar = rootView.findViewById(R.id.toolbar);
         mToolbar.setTitle("蓝图");
-        ((AppCompatActivity) mContext).setSupportActionBar(mToolbar);
-        BaseViewPagerAdapter adapter = new BaseViewPagerAdapter(mContext, getChildFragmentManager());
-        mViewPager.setAdapter(adapter);
-        mTabNav.setupWithViewPager(mViewPager);
-        mViewPager.setCurrentItem(0, true);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+
+        mViewPager.setAdapter(new BaseViewPagerAdapter(getChildFragmentManager(),tabTitle));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        //mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override

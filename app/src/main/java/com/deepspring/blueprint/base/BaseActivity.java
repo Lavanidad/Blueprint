@@ -7,23 +7,15 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.deepspring.blueprint.R;
-import com.deepspring.blueprint.fragment.DailyFragment;
-import com.deepspring.blueprint.fragment.MapFragment;
-import com.deepspring.blueprint.fragment.UserFragment;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
