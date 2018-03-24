@@ -19,6 +19,7 @@ import android.widget.Toast;
 public abstract class BaseFragment extends Fragment {
 
     protected Context mContext;
+    protected View mRootView;
 
     @Override
     public void onAttach(Context context) {
@@ -58,7 +59,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutId();
 
 
-    protected abstract void initViews();
+    protected abstract void initViews(View rootView);
 
     protected void initData() {
     }

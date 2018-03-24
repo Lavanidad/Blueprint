@@ -32,14 +32,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="55dp"
-            android:scrollbars="none"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="420dp"
+            android:layout_marginBottom="25dp"
+            android:paddingBottom="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="408dp"
                 android:orientation="vertical">
 
                 <include layout="@layout/cardview_1" />
@@ -51,8 +50,5 @@
 
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
-
-
 </android.support.design.widget.CoordinatorLayout>

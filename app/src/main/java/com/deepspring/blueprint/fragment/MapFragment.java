@@ -13,16 +13,15 @@ import android.view.ViewGroup;
 
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
+import com.deepspring.blueprint.base.BaseFragment;
 
 
-public class MapFragment extends Fragment {
+public class MapFragment extends BaseFragment {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private Toolbar mToolbar;
     private String[] tabTitle = {"跑步","骑行"};
-    private Context mContext;
-
 
     public static MapFragment newInstance(String title) {
         MapFragment fragment = new MapFragment();
@@ -32,7 +31,7 @@ public class MapFragment extends Fragment {
         return fragment;
     }
 
-
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_map;
     }
@@ -44,14 +43,13 @@ public class MapFragment extends Fragment {
         return rootView;
     }
 
-
+    @Override
     protected void initViews(View rootView) {
         mTabLayout = rootView.findViewById(R.id.tab_nav);
         mViewPager = rootView.findViewById(R.id.viewpager);
         mToolbar = rootView.findViewById(R.id.toolbar);
         mToolbar.setTitle("蓝图");
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
-
         mViewPager.setAdapter(new BaseViewPagerAdapter(getChildFragmentManager(),tabTitle));
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -70,7 +68,6 @@ public class MapFragment extends Fragment {
 
             }
         });
-        //mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override

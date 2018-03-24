@@ -23,8 +23,6 @@
             android:layout_marginStart="16.0dp"/>
 
 
-
-
         <LinearLayout
             android:layout_marginBottom="13.0dp"
             android:layout_marginLeft="20.0dp"

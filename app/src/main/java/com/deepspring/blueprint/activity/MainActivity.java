@@ -1,9 +1,13 @@
 package com.deepspring.blueprint.activity;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 
@@ -49,6 +53,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));  //TODO 改为绿色
             } catch (Exception e) {}
         }
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                window.getDecorView().setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                );
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setNavigationBarColor(Color.BLACK);
+//                window.setNavigationBarColor(Color.BLUE);
+            }
+        }
         super.initViews();
         InitNavigationBar();
         ButterKnife.bind(this);
@@ -57,9 +74,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private void InitNavigationBar() {
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.daily_32dp, "发现").setActiveColorResource(R.color.colorAccent))
+                .addItem(new BottomNavigationItem(R.mipmap.daily_32dp, "发现").setActiveColorResource(R.color.colorPrimary))
                 .addItem(new BottomNavigationItem(R.mipmap.run_32dp, "运动").setActiveColorResource(R.color.colorPrimary))
-                .addItem(new BottomNavigationItem(R.mipmap.user_32dp, "我的").setActiveColorResource(R.color.colorAccent))
+                .addItem(new BottomNavigationItem(R.mipmap.user_32dp, "我的").setActiveColorResource(R.color.colorPrimary))
                 .setFirstSelectedPosition(LAST_SELECTED_POSITION)
                 .setTabSelectedListener(this)
                 .setMode(BottomNavigationBar.MODE_SHIFTING)
