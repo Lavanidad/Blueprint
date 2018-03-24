@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 Class decorViewClazz = Class.forName("com.android.internal.policy.DecorView");
                 Field field = decorViewClazz.getDeclaredField("mSemiTransparentStatusBarColor");
                 field.setAccessible(true);
-                field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));  //改为透明
+                field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));  //TODO 改为绿色
             } catch (Exception e) {}
         }
         super.initViews();

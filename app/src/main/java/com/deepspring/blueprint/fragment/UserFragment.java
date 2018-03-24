@@ -17,7 +17,6 @@ public class UserFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static UserFragment newInstance(String title) {
         UserFragment fragment = new UserFragment();
         Bundle args = new Bundle();
@@ -34,7 +33,6 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false);
     }
 
