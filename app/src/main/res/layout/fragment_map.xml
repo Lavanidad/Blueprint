@@ -16,12 +16,23 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:paddingTop="25dp"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ToolbarPopupTheme">
 
+                <Button
+                    android:id="@+id/step_countBtn"
+                    android:background="@drawable/step_btn_shape"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="-1dp"
+                    android:layout_marginTop="13.5dp"
+
+                    android:text="    步数统计   >"
+                    android:textSize="12.0sp"/>
             </android.support.v7.widget.Toolbar>
+
 
         </android.support.design.widget.AppBarLayout>
 

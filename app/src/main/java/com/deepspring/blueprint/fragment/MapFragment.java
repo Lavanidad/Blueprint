@@ -1,6 +1,7 @@
 package com.deepspring.blueprint.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.deepspring.blueprint.R;
+import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
 
@@ -40,6 +43,15 @@ public class MapFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         initViews(rootView);
+        Button mStepBtn = rootView.findViewById(R.id.step_countBtn);
+        mStepBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast("Click StepActivity");
+                Intent intent = new Intent(getActivity(),StepActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 

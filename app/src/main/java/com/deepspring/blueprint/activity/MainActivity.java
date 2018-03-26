@@ -63,7 +63,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 );
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setNavigationBarColor(Color.BLACK);
-//                window.setNavigationBarColor(Color.BLUE);
             }
         }
         super.initViews();
