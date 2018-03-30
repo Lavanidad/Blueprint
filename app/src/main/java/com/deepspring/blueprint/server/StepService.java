@@ -35,6 +35,7 @@ import java.util.Date;
 import java.util.List;
 
 public class StepService extends Service implements SensorEventListener {
+
     private String TAG = "StepService";
 
     /**
