@@ -33,7 +33,7 @@ import java.lang.reflect.Field;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//todo-list  1、计步页面toolbar添加返回 2、map 3、图形优化 4、第一页
+//todo-list  1、计步页面toolbar添加返回 2、map 3、图形优化，bitmap压缩 4、第一页
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     @BindView(R.id.activity_container)
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 Class decorViewClazz = Class.forName("com.android.internal.policy.DecorView");
                 Field field = decorViewClazz.getDeclaredField("mSemiTransparentStatusBarColor");
                 field.setAccessible(true);
-                field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));  //TODO 改为绿色
+                field.setInt(getWindow().getDecorView(), getColor(R.color.colorPrimary));
             } catch (Exception e) {}
         }
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

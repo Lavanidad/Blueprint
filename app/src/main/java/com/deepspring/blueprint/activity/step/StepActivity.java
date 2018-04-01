@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,6 +18,9 @@ import com.deepspring.blueprint.step.UpdateUiCallBack;
 import com.deepspring.blueprint.utils.SharedPreferencesUtils;
 import com.deepspring.blueprint.view.MyStepView;
 
+/**
+ * todo:修改
+ */
 public class StepActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView tv_data;
@@ -23,6 +29,8 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
     private TextView tv_isSupport;
     private SharedPreferencesUtils sp;
     private boolean isBind = false;
+    private Toolbar mToolbar;
+
 
     @Override
     protected int getLayoutId() {
@@ -36,6 +44,15 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         cc = findViewById(R.id.cc);
         tv_set = findViewById(R.id.tv_set);
         tv_isSupport = findViewById(R.id.tv_isSupport);
+
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setTitle("");
+        if(mActionBar != null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         initDatas();
         addListener();
     }
@@ -45,7 +62,7 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         super.initDatas();
         sp = new SharedPreferencesUtils(this);
         //获取计划步数，默认6000
-        String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "7000");
+        String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "6000");
         cc.setCurrentCount(Integer.parseInt(planWalk_QTY), 0);
         tv_isSupport.setText("计步中...");
         setupService();
@@ -118,6 +135,16 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
                // startActivity(new Intent(this, HistoryActivity.class));
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

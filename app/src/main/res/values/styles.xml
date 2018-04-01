@@ -30,7 +30,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
-        <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
+        <item name="navigationIcon">@drawable/abc_ic_back</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">14sp</item>
@@ -43,7 +43,7 @@
     </style>
 
     <style name="ToolBarWithNavigationBack">
-        <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
+        <item name="navigationIcon">@drawable/abc_ic_back</item>
     </style>
 
 </resources>

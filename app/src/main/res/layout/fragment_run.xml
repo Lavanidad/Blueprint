@@ -7,8 +7,8 @@
 
     <com.github.edsergeev.TextFloatingActionButton
         android:id="@+id/run_fab"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
+        android:layout_width="94dp"
+        android:layout_height="94dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_margin="@dimen/fab_margin"
         android:scaleType="fitXY"
