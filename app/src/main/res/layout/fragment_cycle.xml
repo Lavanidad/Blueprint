@@ -2,11 +2,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.deepspring.blueprint.fragment.Map.CycleFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="CYC" />
+    <com.github.edsergeev.TextFloatingActionButton
+        android:id="@+id/cycle_fab"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="@dimen/fab_margin"
+        android:scaleType="fitXY"
+        android:translationZ="10.0dp"
+        app:backgroundTint="@android:color/white"
+        app:useCompatPadding="true"
+
+        android:text="Go!"
+        app:text_x_offset="7dp"
+        app:text_y_offset="10dp"
+        android:textColor="#000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
+
+    <com.github.edsergeev.TextFloatingActionButton
+        android:id="@+id/cycle_fab2"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="@dimen/fab_margin"
+        android:scaleType="fitXY"
+        android:translationZ="10.0dp"
+        app:backgroundTint="@android:color/white"
+        app:useCompatPadding="true"
+
+        android:text="Go!"
+        app:text_x_offset="7dp"
+        app:text_y_offset="10dp"
+        android:textColor="#000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
 
 </FrameLayout>

@@ -36,6 +36,8 @@
         </activity>
         <activity android:name=".activity.step.StepActivity"
             android:launchMode="singleTask"/>
+        <activity android:name=".activity.RunActivity"
+            android:launchMode="singleTask"/>
 
         <service
             android:name=".server.StepService"
