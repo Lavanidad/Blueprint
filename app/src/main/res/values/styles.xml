@@ -5,8 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <!--控制各个控件被选中时的颜色-->
-        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 控制各个控件被选中时的颜色-->
+        <item name="colorAccent">@color/colorPrimary</item>
         <!--api 21 可用 底部导航栏颜色-->
         <!--<item name="android:navigationBarColor">@color/colorPrimary</item>-->
         <!--<item name="android:textColorPrimary">@color/white</item>-->
