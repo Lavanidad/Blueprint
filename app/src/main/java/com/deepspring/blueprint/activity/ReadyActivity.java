@@ -40,9 +40,9 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
         animation1 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation3 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
-        animation1.setDuration(1500);
-        animation2.setDuration(1500);
-        animation3.setDuration(1500);
+        animation1.setDuration(1300);
+        animation2.setDuration(1300);
+        animation3.setDuration(1300);
         animation1.setAnimationListener(this);
         animation2.setAnimationListener(this);
         animation3.setAnimationListener(this);

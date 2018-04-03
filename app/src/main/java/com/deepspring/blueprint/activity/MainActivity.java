@@ -33,7 +33,7 @@ import java.lang.reflect.Field;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//todo-list  1、计步页面toolbar添加返回 2、map 3、图形优化，bitmap压缩 4、第一页
+//todo-list   2、map 3、图形优化，bitmap压缩 4、第一页
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     @BindView(R.id.activity_container)

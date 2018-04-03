@@ -27,7 +27,7 @@ import android.hardware.SensorManager;
 /**
  * Detects steps and notifies all listeners (that implement StepListener).
  * @author Levente Bagi
- * @todo REFACTOR: SensorListener is deprecated
+ * @ REFACTOR: SensorListener is deprecated
  */
 public class StepDetector implements SensorEventListener {
 

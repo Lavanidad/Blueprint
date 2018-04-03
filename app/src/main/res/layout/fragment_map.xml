@@ -11,7 +11,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:elevation="0dp">
 
-            <!--todo:左边一个天气空间 和 右边的步数按钮，点击可以跳转AC-->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
