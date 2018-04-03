@@ -1,12 +1,12 @@
 package com.deepspring.blueprint.fragment;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.cocosw.bottomsheet.BottomSheet;
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
-import com.deepspring.blueprint.view.ActionSheetDialog;
 
 
 public class MapFragment extends BaseFragment {
@@ -30,6 +30,7 @@ public class MapFragment extends BaseFragment {
     private String[] tabTitle = {"跑步","骑行"};
     private FloatingActionButton mFloatButton;
     private boolean fbOpend = false;
+
 
     public static MapFragment newInstance(String title) {
         MapFragment fragment = new MapFragment();
@@ -46,7 +47,7 @@ public class MapFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         initViews(rootView);
         Button mStepBtn = rootView.findViewById(R.id.step_countBtn);
         mStepBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,25 +66,20 @@ public class MapFragment extends BaseFragment {
                 }else{
                     closeBtn(v);
                 }
-                new ActionSheetDialog(getActivity())
-                        .builder()
-                        .setCancelable(false)
-                        .setCanceledOnTouchOutside(true)
-                        .addSheetItem("历史数据", ActionSheetDialog.SheetItemColor.Blue,
-                                new ActionSheetDialog.OnSheetItemClickListener() {
-                                    @Override
-                                    public void onClick(int which) {
+                new BottomSheet.Builder(getActivity()).sheet(R.menu.bottom_sheet).listener(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case R.id.history:
+                                toast("跳转");
+                                break;
+                            case R.id.body:
+                                toast("跳转");
+                                break;
 
-                                    }
-                                })
-                        .addSheetItem("身高体重", ActionSheetDialog.SheetItemColor.Blue,
-                                new ActionSheetDialog.OnSheetItemClickListener() {
-                                    @Override
-                                    public void onClick(int which) {
-
-                                    }
-                                })
-                        .show();
+                        }
+                    }
+                }).show();
             }
         });
         return rootView;

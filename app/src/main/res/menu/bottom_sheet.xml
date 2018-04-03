@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- can add img -->
+    <item android:id="@+id/history" android:title="@string/history"/>
+    <item android:id="@+id/body" android:title="@string/body" />
+</menu>

@@ -25,6 +25,12 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <!-- 全屏样式 -->
+    <style name="AppTheme.FullScreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -73,6 +79,12 @@
     <style name="ETitle" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/actionsheet_blue</item>
         <item name="android:textSize">@dimen/nav_title_text_size</item>
+    </style>
+
+    <!-- 底部popwindow -->
+    <style name="Animations_BottomPush">
+        <item name="android:windowEnterAnimation">@anim/pw_push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/pw_push_bottom_out</item>
     </style>
 
 </resources>

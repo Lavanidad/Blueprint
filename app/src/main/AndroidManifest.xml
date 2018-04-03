@@ -59,6 +59,9 @@
             android:launchMode="singleTask"/>
         <activity android:name="com.amap.api.maps.offlinemap.OfflineMapActivity"
             android:screenOrientation="portrait"  />
+        <activity android:name=".activity.ReadyActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.FullScreen"/>
 
         <service
             android:name=".server.StepService"

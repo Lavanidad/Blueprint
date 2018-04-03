@@ -4,6 +4,7 @@ package com.deepspring.blueprint.view;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -65,7 +66,7 @@ public class ActionSheetDialog {
         dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
         dialog.setContentView(view);
         Window dialogWindow = dialog.getWindow();
-        dialogWindow.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+        dialogWindow.setGravity(Gravity.START | Gravity.BOTTOM);
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.x = 0;
         lp.y = 0;
@@ -136,7 +137,7 @@ public class ActionSheetDialog {
             TextView textView = new TextView(context);
             textView.setText(strItem);
             textView.setTextSize(18);
-            textView.setHeight(38);
+
             textView.setGravity(Gravity.CENTER);
 
             // 背景图片

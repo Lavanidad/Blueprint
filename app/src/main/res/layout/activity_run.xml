@@ -1,14 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_back"/>
 
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="400dp">
     </com.amap.api.maps.MapView>
+
+    <LinearLayout
+        android:background="@drawable/linear_top_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--距离 -->
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:text="0.00"
+            android:textSize="42sp"
+            android:textColor="#000" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="公里(距离)"
+            android:textSize="20sp"
+            android:textColor="@color/diy_black"/>
+        <!-- 时间 配速 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2.5dp">
+            <!--时间 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="#000"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分:秒"
+                    android:textSize="20sp"
+                    android:textColor="@color/diy_black"
+                    />
+            </LinearLayout>
+            <!--配速 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_sd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00'00''"
+                    android:textColor="#000"
+                    android:textSize="30sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="速度"
+                    android:textSize="20sp"
+                    android:textColor="@color/diy_black"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 开始 暂停 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                    android:id="@+id/iv_end"
+                    android:layout_width="65.0dp"
+                    android:layout_height="65.0dp"
+                    android:src="@drawable/ic_end_selector"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"/>
+            <ImageView
+                    android:id="@+id/iv_continue"
+                    android:layout_width="65.0dp"
+                    android:layout_height="65.0dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_continue_selector"
+                    android:visibility="gone"/>
+            <ImageView
+                    android:id="@+id/iv_pause"
+                    android:layout_width="65.0dp"
+                    android:layout_height="65.0dp"
+                    android:src="@drawable/ic_pause_selector"
+                    android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:background="@android:color/transparent"
+                android:src="@drawable/block"
+                android:id="@+id/btn_lock"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 </LinearLayout>
