@@ -1,8 +1,10 @@
 package com.deepspring.blueprint.fragment;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,6 +19,7 @@ import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
+import com.deepspring.blueprint.view.ActionSheetDialog;
 
 
 public class MapFragment extends BaseFragment {
@@ -25,6 +28,8 @@ public class MapFragment extends BaseFragment {
     private ViewPager mViewPager;
     private Toolbar mToolbar;
     private String[] tabTitle = {"跑步","骑行"};
+    private FloatingActionButton mFloatButton;
+    private boolean fbOpend = false;
 
     public static MapFragment newInstance(String title) {
         MapFragment fragment = new MapFragment();
@@ -47,9 +52,38 @@ public class MapFragment extends BaseFragment {
         mStepBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("Click StepActivity");
                 Intent intent = new Intent(getActivity(),StepActivity.class);
                 startActivity(intent);
+            }
+        });
+        mFloatButton = rootView.findViewById(R.id.flo_btn);
+        mFloatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!fbOpend){
+                    openBtn(v);
+                }else{
+                    closeBtn(v);
+                }
+                new ActionSheetDialog(getActivity())
+                        .builder()
+                        .setCancelable(false)
+                        .setCanceledOnTouchOutside(true)
+                        .addSheetItem("历史数据", ActionSheetDialog.SheetItemColor.Blue,
+                                new ActionSheetDialog.OnSheetItemClickListener() {
+                                    @Override
+                                    public void onClick(int which) {
+
+                                    }
+                                })
+                        .addSheetItem("身高体重", ActionSheetDialog.SheetItemColor.Blue,
+                                new ActionSheetDialog.OnSheetItemClickListener() {
+                                    @Override
+                                    public void onClick(int which) {
+
+                                    }
+                                })
+                        .show();
             }
         });
         return rootView;
@@ -80,6 +114,19 @@ public class MapFragment extends BaseFragment {
 
             }
         });
+    }
+
+    public void openBtn(View view){
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view,"rotation",0,-155,-135);
+        animator.setDuration(500);
+        animator.start();
+        fbOpend = true;
+    }
+    public void closeBtn(View view){
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view,"rotation",-135,20,0);
+        animator.setDuration(500);
+        animator.start();
+        fbOpend = false;
     }
 
     @Override

@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.deepspring.blueprint.fragment.Map.RunFragment">
 
+
     <com.github.edsergeev.TextFloatingActionButton
         android:id="@+id/run_fab"
         android:layout_width="94dp"
