@@ -42,9 +42,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     BottomNavigationBar mBottomNavigationBar;
 
     private static int LAST_SELECTED_POSITION = 0;
-    private DailyFragment mDailyFragment;
-    private MapFragment mMapFragment;
-    private UserFragment mUserFragment;
+    private DailyFragment mDailyFragment = null;
+    private MapFragment mMapFragment = null;
+    private UserFragment mUserFragment = null;
 
     @Override
     protected int getLayoutId() {

@@ -10,6 +10,9 @@ import com.litesuits.orm.db.model.ConflictAlgorithm;
 
 import java.util.List;
 
+/**
+ * orm数据库，记录步数
+ */
 public class DbUtils {
     public static String DB_NAME;
     public static LiteOrm liteOrm;

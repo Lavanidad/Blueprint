@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lock_tran">
+
+    <ImageView
+        android:id="@+id/iv_touch"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/animation_right_touchmove"
+        android:layout_above="@+id/tv_below"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_below"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右滑解锁"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:layout_marginTop="-16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

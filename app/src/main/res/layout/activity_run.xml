@@ -72,7 +72,7 @@
 
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tv_sd"
+                    android:id="@+id/tv_speed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="00'00''"
@@ -114,7 +114,8 @@
                     android:layout_width="65.0dp"
                     android:layout_height="65.0dp"
                     android:src="@drawable/ic_pause_selector"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:visibility="visible"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -123,7 +124,7 @@
             <ImageButton
                 android:background="@android:color/transparent"
                 android:src="@drawable/block"
-                android:id="@+id/btn_lock"
+                android:id="@+id/iv_lock"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"

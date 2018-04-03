@@ -2,6 +2,7 @@ package com.deepspring.blueprint.activity;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
     @BindView(R.id.iv_number3)
     ImageView iv3;
 
+    private MediaPlayer music = null;
     private Animation animation1, animation2, animation3;
     private int index = 0;
 
@@ -38,9 +40,9 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
         animation1 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation3 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
-        animation1.setDuration(1100);
-        animation2.setDuration(1100);
-        animation3.setDuration(1100);
+        animation1.setDuration(1500);
+        animation2.setDuration(1500);
+        animation3.setDuration(1500);
         animation1.setAnimationListener(this);
         animation2.setAnimationListener(this);
         animation3.setAnimationListener(this);
@@ -57,18 +59,21 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
         index++;
         switch (index){
             case 1:
+                PlayMusic(R.raw.t3);
                 iv3.clearAnimation();
                 iv3.setVisibility(View.GONE);
                 iv2.setVisibility(View.VISIBLE);
                 iv2.startAnimation(animation2);
                 break;
             case 2:
+                PlayMusic(R.raw.t2);
                 iv2.clearAnimation();
                 iv2.setVisibility(View.GONE);
                 iv1.setVisibility(View.VISIBLE);
                 iv1.startAnimation(animation1);
                 break;
             case 3:
+                PlayMusic(R.raw.t1);
                 iv1.clearAnimation();
                 iv1.setVisibility(View.GONE);
                 startActivity(new Intent(ReadyActivity.this,RunActivity.class));
@@ -82,6 +87,11 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
     @Override
     public void onAnimationRepeat(Animation animation) {
 
+    }
+
+    private void PlayMusic(int MusicId) {
+        music = MediaPlayer.create(this, MusicId);
+        music.start();
     }
 
     @Override

@@ -44,7 +44,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="9de0cc1280a34f8991ea7285f4e96410"/>
+            android:value="91d4d29bd7fda9b586f45593972a2215"/>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -62,6 +62,8 @@
         <activity android:name=".activity.ReadyActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.FullScreen"/>
+        <activity android:name=".activity.LockActivity"
+            android:launchMode="singleTask"/>
 
         <service
             android:name=".server.StepService"
