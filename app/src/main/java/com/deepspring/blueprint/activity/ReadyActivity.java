@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -103,5 +104,14 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
     @Override
     public void setExitSwichLayout() {
         SwitchLayout.ScaleBig(this, false, null);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(android.view.KeyEvent event) {
+        switch(event.getKeyCode()) {
+            case KeyEvent.KEYCODE_BACK:
+                return false;
+        }
+        return true;
     }
 }

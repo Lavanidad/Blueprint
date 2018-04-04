@@ -30,7 +30,9 @@ import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.PolylineOptions;
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.adapter.DbAdapter;
@@ -66,6 +68,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private boolean isStop = false;
     private boolean isPause = false;
 
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -77,7 +80,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
         initViews();
-        mMapView = (MapView) findViewById(R.id.map);
+        mMapView = findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);// 此方法必须重写
         init();//amap
         initpolyline();
@@ -116,6 +119,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         }
     }
 
+
     /**
      * 设置地图属性
      */
@@ -125,8 +129,14 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         // 设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+        MyLocationStyle myLocationStyle = new MyLocationStyle();
+        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.drawable.navi_map_gps_locked));
+        //定义精度圆样式
+        myLocationStyle.strokeColor(0);
+        myLocationStyle.radiusFillColor(0);
         aMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
     }
+
 
     /**
      * trace属性 todo 样式可调试 ( 优先级2.5 )
@@ -165,8 +175,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         if(null != mlocationClient){
             mlocationClient.onDestroy();
         }
-//        mLocationClient.stopLocation();//停止定位
-//        mLocationClient.onDestroy();//销毁定位客户端。
     }
 
     @Override
@@ -202,7 +210,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             //设置是否只定位一次,默认为false
             mLocationOption.setOnceLocation(false);
             //设置定位间隔,单位毫秒,默认为2000ms
-            mLocationOption.setInterval(2000);
+            mLocationOption.setInterval(700);
             //设置是否强制刷新WIFI，默认为强制刷新
             //mLocationOption.setWifiActiveScan(true);
             // 设置定位参数
@@ -331,15 +339,14 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         isStop = true;
-                       //todo ToastUtils.showToast(getBaseContext(),tv_distance+"里程",0);
                         saverecord(record);
                         PathRecord today_record = getTodayData();
-//     todo 跳转                   Intent intent = new Intent(getBaseContext(),RecordShowActivity.class);
-//                        intent.putExtra("recorditem",today_record);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getBaseContext(),ShowRecordActivity.class);
+                        intent.putExtra("record_item",today_record);
+                        startActivity(intent);
                     }
                 });
-                builder.setNegativeButton("继续锻炼", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("继续", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         isPause = false;
@@ -409,9 +416,9 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         record.setDuration(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_DURATION)));
         record.setDate(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_DATE)));
         String lines = mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_LINE));
-        //todo record.setPathline(RecordActivity.parseLocations(lines));
-       // record.setStartpoint(RecordActivity.parseLocation(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_STRAT))));
-       // record.setEndpoint(RecordActivity.parseLocation(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_END))));
+        record.setPathline(HistoryRecordActivity.parseLocations(lines));
+        record.setStartpoint(HistoryRecordActivity.parseLocation(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_STRAT))));
+        record.setEndpoint(HistoryRecordActivity.parseLocation(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_END))));
         return  record;
     }
 
@@ -462,7 +469,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             }
         });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

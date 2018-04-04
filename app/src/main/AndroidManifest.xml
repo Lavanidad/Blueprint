@@ -2,28 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.deepspring.blueprint">
 
-    <!--计歩-->
+    <!-- 计歩 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.sensor.accelerometer" />
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
-    <!--允许程序打开网络套接字-->
+    <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--允许程序设置内置sd卡的写权限-->
+    <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许程序获取网络状态-->
+    <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--允许程序访问WiFi网络信息-->
+    <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许程序读写手机状态和身份-->
+    <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <!--权限包涵网络和SD卡读写权限-->
+    <!-- 权限包涵网络和SD卡读写权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -44,8 +46,10 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="91d4d29bd7fda9b586f45593972a2215"/>
-        <activity android:name=".activity.MainActivity"
+            android:value="91d4d29bd7fda9b586f45593972a2215" />
+
+        <activity
+            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,26 +57,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.step.StepActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".activity.RunActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name="com.amap.api.maps.offlinemap.OfflineMapActivity"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".activity.ReadyActivity"
+        <activity
+            android:name=".activity.step.StepActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.RunActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.amap.api.maps.offlinemap.OfflineMapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReadyActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.FullScreen"/>
-        <activity android:name=".activity.LockActivity"
+            android:theme="@style/AppTheme.FullScreen" />
+        <activity
+            android:name=".activity.LockActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.HistoryRecordActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.ShowRecordActivity"
             android:launchMode="singleTask"/>
 
 
 
-        <service android:name="com.amap.api.location.APSService"/>
+        <service android:name="com.amap.api.location.APSService" />
         <service
             android:name=".server.StepService"
             android:priority="1000">
             <intent-filter>
-                <!-- 系统启动完成后会调用-->
+
+                <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.DATE_CHANGED" />
                 <action android:name="android.intent.action.MEDIA_MOUNTED" />
@@ -87,7 +101,8 @@
             android:priority="1000"
             android:process="com.deepspring.blueprint..pedometer.StepsDetectService">
             <intent-filter>
-                <!-- 系统启动完成后会调用-->
+
+                <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.DATE_CHANGED" />
                 <action android:name="android.intent.action.MEDIA_MOUNTED" />
@@ -97,6 +112,8 @@
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </service>
+
+
     </application>
 
 </manifest>

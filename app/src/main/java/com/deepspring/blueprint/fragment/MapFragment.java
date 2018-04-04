@@ -4,19 +4,20 @@ import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.deepspring.blueprint.R;
+import com.deepspring.blueprint.activity.HistoryRecordActivity;
 import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
@@ -71,7 +72,7 @@ public class MapFragment extends BaseFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case R.id.history:
-                                toast("跳转");
+                                startActivity(new Intent(getActivity(), HistoryRecordActivity.class));
                                 break;
                             case R.id.body:
                                 toast("跳转");
@@ -126,9 +127,18 @@ public class MapFragment extends BaseFragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
-
 
 }
