@@ -47,8 +47,10 @@ import java.util.Date;
 
 /**
  * 不需要drawer，直接继承AC
- * todo: bug 右滑解锁失效 颜色失效 图标大小异常 该功能需要重做 ; 2 定位失败 错误7 key错误( 优先级1 )
- * todo: 完善运动记录页面,添加查询附近共享单车。优先级1.5
+ * todo: 优先级1：bug 右滑解锁失效 颜色失效 图标大小异常 该功能需要重做；
+ * todo: 优先级2：完善运动记录页面,添加查询附近共享单车。添加第一页的布局
+ * todo: 优先级3：计步页面处理完，Service Notification 权限 重做
+ * todo: 优先级4：记录页面和列表页面，back逻辑混乱
  */
 public class RunActivity extends AppCompatActivity implements LocationSource,
         AMapLocationListener, View.OnClickListener{
@@ -110,7 +112,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     }
 
     /**
-     * 初始化地图 todo 如果耗时可以开启子线程( 优先级1.5 测试中)
+     * 初始化地图
      */
     private void init(){
         if(aMap == null){
