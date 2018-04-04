@@ -123,7 +123,7 @@
             android:layout_height="wrap_content">
             <ImageButton
                 android:background="@android:color/transparent"
-                android:src="@drawable/block"
+                android:src="@mipmap/block"
                 android:id="@+id/iv_lock"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

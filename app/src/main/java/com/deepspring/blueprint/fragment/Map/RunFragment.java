@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -38,8 +39,13 @@ public class RunFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PlayMusic(R.raw.begin);
-                Intent intent = new Intent(getActivity(), ReadyActivity.class);
-                startActivity(intent);
+                new Handler(new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(Message msg) {
+                        startActivity(new Intent(getActivity(),ReadyActivity.class));
+                        return false;
+                    }
+                }).sendEmptyMessageDelayed(0,1200);
             }
         });
         return rootView;
@@ -55,17 +61,8 @@ public class RunFragment extends Fragment {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
-                            final Handler handler = new Handler();
-                            Runnable runnable = new Runnable() {
-                                @Override
-                                public void run() {
-                                    PlayMusic(R.raw.begin);
-                                    handler.sendEmptyMessageDelayed(1,1500);
                                     Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                                     startActivityForResult(intent, 0); // 设置完成后返回到原来的界面
-                                }
-                            };
-
                         }
                     });
             dialog.setNeutralButton("取消", new DialogInterface.OnClickListener() {

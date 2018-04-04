@@ -65,6 +65,9 @@
         <activity android:name=".activity.LockActivity"
             android:launchMode="singleTask"/>
 
+
+
+        <service android:name="com.amap.api.location.APSService"/>
         <service
             android:name=".server.StepService"
             android:priority="1000">

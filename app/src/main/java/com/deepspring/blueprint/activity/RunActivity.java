@@ -45,7 +45,8 @@ import java.util.Date;
 
 /**
  * 不需要drawer，直接继承AC
- * todo: bug 右滑解锁失效 颜色失效 ; 2 定位失败！！！！( 优先级1 )
+ * todo: bug 右滑解锁失效 颜色失效 图标大小异常 该功能需要重做 ; 2 定位失败 错误7 key错误( 优先级1 )
+ * todo: 完善运动记录页面,添加查询附近共享单车。优先级1.5
  */
 public class RunActivity extends AppCompatActivity implements LocationSource,
         AMapLocationListener, View.OnClickListener{
@@ -54,7 +55,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private AMapLocationClient mlocationClient;
-    private AMapLocationClientOption mLocationOption;
+    private AMapLocationClientOption mLocationOption = null;
     private PathRecord record;//记录，需要关联user和bottom sheet
     private PolylineOptions mPolyoptions;
     private DbAdapter DbHepler;
@@ -201,9 +202,9 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             //设置是否只定位一次,默认为false
             mLocationOption.setOnceLocation(false);
             //设置定位间隔,单位毫秒,默认为2000ms
-            mLocationOption.setInterval(500);
+            mLocationOption.setInterval(2000);
             //设置是否强制刷新WIFI，默认为强制刷新
-            mLocationOption.setWifiActiveScan(true);
+            //mLocationOption.setWifiActiveScan(true);
             // 设置定位参数
             mlocationClient.setLocationOption(mLocationOption);
             // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，

@@ -11,7 +11,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/login_btn_qq" />
+        android:src="@mipmap/login_btn_qq" />
 
     <LinearLayout
         android:layout_width="wrap_content"

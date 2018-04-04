@@ -40,13 +40,14 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
         animation1 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
         animation3 = AnimationUtils.loadAnimation(this,R.anim.img_scale);
-        animation1.setDuration(1300);
-        animation2.setDuration(1300);
-        animation3.setDuration(1300);
+        animation1.setDuration(1000);
+        animation2.setDuration(1000);
+        animation3.setDuration(1000);
         animation1.setAnimationListener(this);
         animation2.setAnimationListener(this);
         animation3.setAnimationListener(this);
         iv3.startAnimation(animation3);
+        PlayMusic(R.raw.t3);
     }
 
     @Override
@@ -59,21 +60,21 @@ public class ReadyActivity extends AppCompatActivity implements Animation.Animat
         index++;
         switch (index){
             case 1:
-                PlayMusic(R.raw.t3);
+                PlayMusic(R.raw.t2);
                 iv3.clearAnimation();
                 iv3.setVisibility(View.GONE);
                 iv2.setVisibility(View.VISIBLE);
                 iv2.startAnimation(animation2);
                 break;
             case 2:
-                PlayMusic(R.raw.t2);
+                PlayMusic(R.raw.t1);
                 iv2.clearAnimation();
                 iv2.setVisibility(View.GONE);
                 iv1.setVisibility(View.VISIBLE);
                 iv1.startAnimation(animation1);
                 break;
             case 3:
-                PlayMusic(R.raw.t1);
+
                 iv1.clearAnimation();
                 iv1.setVisibility(View.GONE);
                 startActivity(new Intent(ReadyActivity.this,RunActivity.class));

@@ -24,10 +24,9 @@
                     android:background="@drawable/step_btn_shape"
                     android:layout_width="80dp"
                     android:layout_height="30dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="-1dp"
                     android:layout_marginTop="13.5dp"
-
                     android:text="    步数统计   >"
                     android:textSize="12.0sp"/>
             </android.support.v7.widget.Toolbar>
@@ -80,16 +79,11 @@
                     android:layout_height="match_parent"
                     android:text="骑行" />
 
-                <!--<android.support.design.widget.TabItem-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:text="健走" />-->
-
             </android.support.design.widget.TabLayout>
         </RelativeLayout>
 
         <android.support.v4.view.ViewPager
-            android:background="@mipmap/map_bg2"
+            android:background="@mipmap/map_bg1"
             android:id="@+id/viewpager"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -108,6 +102,6 @@
         android:layout_marginTop="125dp"
         android:layout_marginEnd="20dp"
         android:layout_gravity="end"
-        android:src="@drawable/add" />
+        android:src="@mipmap/add" />
 
 </android.support.design.widget.CoordinatorLayout>

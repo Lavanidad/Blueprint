@@ -134,7 +134,7 @@ public class StepService extends Service implements SensorEventListener {
                 .setPriority(Notification.PRIORITY_DEFAULT)//设置该通知优先级
                 .setAutoCancel(false)//设置这个标志当用户单击面板就可以让通知将自动取消
                 .setOngoing(true)//ture，设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)
-                .setSmallIcon(R.mipmap.logo);
+                .setSmallIcon(R.mipmap.ic_launcher);
         Notification notification = mBuilder.build();
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         startForeground(notifyId_Step, notification);
@@ -146,7 +146,7 @@ public class StepService extends Service implements SensorEventListener {
      */
     private void initTodayData() {
         CURRENT_DATE = getTodayDate();
-        DbUtils.createDb(this, "DylanStepCount");
+        DbUtils.createDb(this, "BlueStepCount");
         DbUtils.getLiteOrm().setDebugged(false);
         //获取当天的数据，用于展示
         List<StepData> list = DbUtils.getQueryByWhere(StepData.class, "today", new String[]{CURRENT_DATE});
