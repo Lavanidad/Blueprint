@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -45,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         initViews();
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     @LayoutRes

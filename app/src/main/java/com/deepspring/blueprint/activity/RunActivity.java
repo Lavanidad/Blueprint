@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -409,6 +410,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
 
     }
 
+    @Nullable
     private PathRecord getTodayData() {
         PathRecord path = new PathRecord();
         DbHepler.open();
@@ -480,5 +482,14 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(android.view.KeyEvent event) {
+        switch(event.getKeyCode()) {
+            case KeyEvent.KEYCODE_BACK:
+                return false;
+        }
+        return true;
     }
 }
