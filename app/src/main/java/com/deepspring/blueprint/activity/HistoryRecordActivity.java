@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,7 +22,7 @@ import com.deepspring.blueprint.bean.PathRecord;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class HistoryRecordActivity extends BaseActivity {
+public class HistoryRecordActivity extends AppCompatActivity {
 
     private ShareRecordAdapter mAdapter;
     private ListView record_list;
@@ -30,22 +31,19 @@ public class HistoryRecordActivity extends BaseActivity {
     private Toolbar mToolbar;
     private ArrayList<PathRecord> listdata = new ArrayList<PathRecord>();
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_historyrecord;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews();
-    }
-
-    @Override
-    protected void initViews() {
-        super.initViews();
-        record_list = findViewById(R.id.record_list);
+        setContentView(R.layout.activity_historyrecord);
         mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setTitle("");
+        if(mActionBar != null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        record_list = findViewById(R.id.record_list);
         DbHepler=new DbAdapter(this);
         DbHepler.open();
         addRecorddata();
@@ -61,13 +59,9 @@ public class HistoryRecordActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-        setSupportActionBar(mToolbar);
-        ActionBar mActionBar = getSupportActionBar();
-        mActionBar.setTitle("");
-        if(mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-        }
     }
+
+
 
     private void addRecorddata() {
         mCursor=DbHepler.getallrecord();

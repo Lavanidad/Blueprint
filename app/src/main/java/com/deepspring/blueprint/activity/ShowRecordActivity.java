@@ -40,6 +40,7 @@ public class ShowRecordActivity extends BaseActivity implements AMap.OnMapLoaded
     private final static int UPDATE_MARKER = 0;
     private final static int MOVE_FINISH = 1;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_showrecord;

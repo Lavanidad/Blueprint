@@ -1,17 +1,22 @@
 package com.deepspring.blueprint.activity;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -55,21 +60,21 @@ import java.util.Date;
 public class RunActivity extends AppCompatActivity implements LocationSource,
         AMapLocationListener, View.OnClickListener{
 
-    private MapView mMapView;
+    private MapView mapView;
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private AMapLocationClient mlocationClient;
-    private AMapLocationClientOption mLocationOption = null;
-    private PathRecord record;//记录，需要关联user和bottom sheet
+    private AMapLocationClientOption mLocationOption;
     private PolylineOptions mPolyoptions;
-    private DbAdapter DbHepler;
-    private ImageView iv_pause, iv_continue, iv_end, iv_lock;
-    private TextView tv_speed,tv_time,tv_distance;
+    private PathRecord record;
     private long starttime;
     private long endtime;
-    private boolean isStop = false;
-    private boolean isPause = false;
+    private DbAdapter DbHepler;
+    private ImageView iv_lock;
+    private ImageView iv_pause, iv_continue, iv_end;
+    private TextView tv_speed,tv_time,tv_distance;
 
+    private static final int PERMISSIONS_REQUEST_LOCATION = 1;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -77,14 +82,16 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
      */
     private GoogleApiClient client;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
         initViews();
-        mMapView = findViewById(R.id.map);
-        mMapView.onCreate(savedInstanceState);// 此方法必须重写
-        init();//amap
+        mapView = findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);// 此方法必须重写
+        init();
         initpolyline();
         if (record != null) {
             record = null;
@@ -96,6 +103,15 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     }
 
     private void initViews() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_LOCATION);
+            }else {
+
+            }
+        }
         iv_pause = findViewById(R.id.iv_pause);
         iv_continue = findViewById(R.id.iv_continue);
         iv_end = findViewById(R.id.iv_end);
@@ -116,7 +132,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
      */
     private void init(){
         if(aMap == null){
-            aMap = mMapView.getMap();
+            aMap = mapView.getMap();
             setUpMap();
         }
     }
@@ -131,11 +147,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         // 设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
-        MyLocationStyle myLocationStyle = new MyLocationStyle();
-        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.drawable.navi_map_gps_locked));
-        //定义精度圆样式
-        myLocationStyle.strokeColor(0);
-        myLocationStyle.radiusFillColor(0);
         aMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
     }
 
@@ -153,27 +164,27 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     protected void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
-        mMapView.onResume();
+        mapView.onResume();
     }
     @Override
     protected void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
-        mMapView.onPause();
+        mapView.onPause();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
-        mMapView.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
-        mMapView.onDestroy();
+        mapView.onDestroy();
         if(null != mlocationClient){
             mlocationClient.onDestroy();
         }
@@ -212,7 +223,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             //设置是否只定位一次,默认为false
             mLocationOption.setOnceLocation(false);
             //设置定位间隔,单位毫秒,默认为2000ms
-            mLocationOption.setInterval(700);
+            mLocationOption.setInterval(500);
             //设置是否强制刷新WIFI，默认为强制刷新
             //mLocationOption.setWifiActiveScan(true);
             // 设置定位参数
@@ -263,12 +274,12 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private int index = 0;
     private double distance = 0.0;
     @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
-        if (mListener != null && aMapLocation != null) {
-            if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
-                mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
-                LatLng mylocation = new LatLng(aMapLocation.getLatitude(),
-                        aMapLocation.getLongitude());
+    public void onLocationChanged(AMapLocation amapLocation) {
+        if (mListener != null && amapLocation != null) {
+            if (amapLocation != null && amapLocation.getErrorCode() == 0) {
+                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
+                LatLng mylocation = new LatLng(amapLocation.getLatitude(),
+                        amapLocation.getLongitude());
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(mylocation));
                 //更新distance并且显示到textview
                 int size = record.getPathline().size();
@@ -289,14 +300,19 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                         tv_speed.setText(TimeUtil.getSd(second, distance));
                     }
                 }
+
+//                if (btn.isChecked()) {
                 record.addpoint(mylocation);
                 mPolyoptions.add(mylocation);
-                redrawline();//需要用算法调试的地方！
+
+                //
+                redrawline();
                 index++;
+//                }
             } else {
-                String errText = "定位失败," + aMapLocation.getErrorCode() + ": "
-                        + aMapLocation.getErrorInfo();
-                Log.e("Retrun Error", errText);
+                String errText = "定位失败," + amapLocation.getErrorCode() + ": "
+                        + amapLocation.getErrorInfo();
+                Log.e("AmapErr", errText);
             }
         }
     }
@@ -319,6 +335,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         return date;
     }
 
+    private boolean isStop = false,isPause=false;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -406,7 +423,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             Toast.makeText(this, "没有记录到路径", Toast.LENGTH_SHORT)
                     .show();
         }
-
     }
 
     private PathRecord getTodayData() {
@@ -470,6 +486,11 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             public void onAnimationRepeat(Animator animation) {
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 
     @Override

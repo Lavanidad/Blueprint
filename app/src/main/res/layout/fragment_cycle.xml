@@ -9,8 +9,8 @@
         android:id="@+id/cycle_fab"
         android:layout_width="84dp"
         android:layout_height="84dp"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="100dp"
         android:scaleType="fitXY"
         android:translationZ="10.0dp"
         app:backgroundTint="@android:color/white"
@@ -21,26 +21,28 @@
         app:text_y_offset="10dp"
         android:textColor="#000"
         android:textSize="32sp"
-        android:textStyle="bold"
         android:fontFamily="sans-serif-medium" />
 
     <com.github.edsergeev.TextFloatingActionButton
         android:id="@+id/cycle_fab2"
         android:layout_width="84dp"
         android:layout_height="84dp"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_margin="@dimen/fab_margin"
-        android:scaleType="fitXY"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="200dp"
+        android:scaleType="center"
         android:translationZ="10.0dp"
+        android:src="@drawable/bike_32"
         app:backgroundTint="@android:color/white"
         app:useCompatPadding="true"
 
-        android:text="Go!"
+        android:text=""
         app:text_x_offset="7dp"
         app:text_y_offset="10dp"
         android:textColor="#000"
-        android:textSize="32sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium" />
+
+
 
 </FrameLayout>

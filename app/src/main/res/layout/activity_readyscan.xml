@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <include layout="@layout/toolbar_back"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:text="扫一扫 就开锁"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:text="助力低碳出行"/>
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/go_bike2"/>
+
+    <Button
+        android:id="@+id/scan_btn"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/shape_cycle_btn"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:translationZ="5.0dp"
+        android:text="扫 码 骑 车"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="65dp">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="支持以下品牌"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#999" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv"
+            android:background="#999" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv"
+            android:background="#999" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ofo"/>
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/mobike"/>
+    </LinearLayout>
+
+</LinearLayout>
