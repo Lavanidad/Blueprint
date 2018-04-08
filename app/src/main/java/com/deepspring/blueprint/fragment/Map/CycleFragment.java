@@ -53,7 +53,7 @@ public class CycleFragment extends Fragment {
         mCycleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),ReadyScanActivity.class));
+               startActivity(new Intent(getActivity(),ReadyScanActivity.class));
             }
         });
 

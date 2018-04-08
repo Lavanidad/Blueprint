@@ -11,6 +11,7 @@ import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,6 @@ public class RunFragment extends Fragment {
         });
         return rootView;
     }
-
 
     private void PlayMusic(int MusicId) {
         music = MediaPlayer.create(getActivity(), MusicId);

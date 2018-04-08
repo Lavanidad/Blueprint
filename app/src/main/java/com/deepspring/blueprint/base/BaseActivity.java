@@ -1,16 +1,12 @@
 package com.deepspring.blueprint.base;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -20,23 +16,13 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected DrawerLayout mRootView;
     private Toast mToast;
     protected FrameLayout flActivityContainer;
-
-    private static final int PERMISSIONS_REQUEST_CAMERA = 0;
-    private static final int PERMISSIONS_REQUEST_READ = 1;
-    private final static String[] permissions = new String[]{
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA};
-    List<String> mPermissionList = new ArrayList<>();
 
     private NavigationView.OnNavigationItemSelectedListener mListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -60,49 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         initViews();
-        initPermissions();
-    }
-
-    private void initPermissions() {
-        /**
-         * 判断哪些权限未授予
-         */
-        mPermissionList.clear();
-        for(int i = 0; i < permissions.length; i++) {
-            if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                    permissions[i]) != PackageManager.PERMISSION_GRANTED) {
-                mPermissionList.add(permissions[i]);
-            }
-            if (mPermissionList.isEmpty()) {//未授予的权限为空，表示都授予了
-
-            } else {//请求权限方法
-                String[] permissions = mPermissionList.toArray(new String[mPermissionList.size()]);//将List转为数组
-                ActivityCompat.requestPermissions(BaseActivity.this, permissions, PERMISSIONS_REQUEST_CAMERA);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-
-        if (requestCode == PERMISSIONS_REQUEST_READ) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                toastShort("权限已申请");
-            } else {
-                toastShort("权限已拒绝");
-            }
-        }else if (requestCode == PERMISSIONS_REQUEST_CAMERA){
-            for (int i = 0; i < grantResults.length; i++) {
-                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                    //判断是否勾选禁止后不再询问
-                    boolean showRequestPermission = ActivityCompat.shouldShowRequestPermissionRationale(BaseActivity.this, permissions[i]);
-                    if (showRequestPermission) {
-                        toastShort("缺少必要权限");
-                    }
-                }
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     @LayoutRes
