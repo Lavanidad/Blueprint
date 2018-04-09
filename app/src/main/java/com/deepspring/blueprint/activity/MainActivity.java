@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     }
 
         private void InitNavigationBar() {
-            BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+            BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
             bottomNavigationBar
                     .addItem(new BottomNavigationItem(R.mipmap.daily_32dp, "发现").setActiveColorResource(R.color.colorPrimary))
                     .addItem(new BottomNavigationItem(R.mipmap.run_32dp, "运动").setActiveColorResource(R.color.colorPrimary))

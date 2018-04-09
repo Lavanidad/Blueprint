@@ -3,12 +3,15 @@ package com.deepspring.blueprint.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,11 +30,6 @@ public class ReadyScanActivity extends BaseActivity {
     private Toolbar mToolbar;
     public static final int REQUEST_CODE = 111; //跳转扫描请求码
 
-    /**
-     * 请求CAMERA权限码
-     */
-    public static final int REQUEST_CAMERA_PERM = 101;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_readyscan;
@@ -41,7 +39,6 @@ public class ReadyScanActivity extends BaseActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         initViews();
-        onClick(mButton);
     }
 
     @Override
@@ -55,16 +52,13 @@ public class ReadyScanActivity extends BaseActivity {
         if(mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
         }
-    }
-
-
-
-    public void onClick(View v) {
-        Toast.makeText(ReadyScanActivity.this, "???", Toast.LENGTH_SHORT).show();
-        Log.d("button","click");
-        Intent intent = new Intent(getApplication(), CaptureActivity.class);
-        startActivityForResult(intent,REQUEST_CODE);
-        //CodeUtils.isLightEnable(true);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), CaptureActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
+            }
+        });
     }
 
     @Override

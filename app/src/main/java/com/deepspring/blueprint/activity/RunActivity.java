@@ -75,8 +75,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private ImageView iv_pause, iv_continue, iv_end;
     private TextView tv_speed,tv_time,tv_distance;
 
-    private static final int PERMISSIONS_REQUEST_LOCATION = 1;
-
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -104,15 +102,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     }
 
     private void initViews() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        PERMISSIONS_REQUEST_LOCATION);
-            }else {
-
-            }
-        }
         iv_pause = findViewById(R.id.iv_pause);
         iv_continue = findViewById(R.id.iv_continue);
         iv_end = findViewById(R.id.iv_end);
@@ -301,15 +290,11 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                         tv_speed.setText(TimeUtil.getSd(second, distance));
                     }
                 }
-
-//                if (btn.isChecked()) {
                 record.addpoint(mylocation);
                 mPolyoptions.add(mylocation);
 
-                //
                 redrawline();
                 index++;
-//                }
             } else {
                 String errText = "定位失败," + amapLocation.getErrorCode() + ": "
                         + amapLocation.getErrorInfo();

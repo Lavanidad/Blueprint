@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     xmlns:layout="http://schemas.android.com/apk/res-auto">
-
     <include layout="@layout/toolbar_back"/>
 
     <TextView
@@ -39,8 +39,7 @@
         android:textSize="18sp"
         android:textColor="@color/white"
         android:translationZ="5.0dp"
-        android:text="扫 码 骑 车"
-        android:onClick="onClick"/>
+        android:text="扫 码 骑 车"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
