@@ -73,6 +73,8 @@
         <activity
             android:name=".activity.step.StepActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".activity.step.HistroyStepActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".activity.RunActivity"
             android:launchMode="singleTask" />

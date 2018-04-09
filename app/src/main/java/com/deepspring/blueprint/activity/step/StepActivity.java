@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.deepspring.blueprint.R;
@@ -17,16 +18,14 @@ import com.deepspring.blueprint.server.StepService;
 import com.deepspring.blueprint.step.UpdateUiCallBack;
 import com.deepspring.blueprint.utils.SharedPreferencesUtils;
 import com.deepspring.blueprint.view.MyStepView;
+import com.haibin.calendarview.CalendarLayout;
+import com.haibin.calendarview.CalendarView;
 
-/**
- * todo:修改
- */
+
 public class StepActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView tv_data;
-    private MyStepView cc;
-    private TextView tv_set;
-    private TextView tv_isSupport;
+    private TextView tv_data, tv_set, tv_isSupport;
+    private MyStepView mStepView;
     private SharedPreferencesUtils sp;
     private boolean isBind = false;
     private Toolbar mToolbar;
@@ -41,7 +40,7 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
     protected void initViews() {
         super.initViews();
         tv_data = findViewById(R.id.tv_data);
-        cc = findViewById(R.id.cc);
+        mStepView = findViewById(R.id.progress);
         tv_set = findViewById(R.id.tv_set);
         tv_isSupport = findViewById(R.id.tv_isSupport);
 
@@ -52,7 +51,6 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         if(mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
         }
-
         initDatas();
         addListener();
     }
@@ -63,7 +61,7 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         sp = new SharedPreferencesUtils(this);
         //获取计划步数，默认6000
         String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "6000");
-        cc.setCurrentCount(Integer.parseInt(planWalk_QTY), 0);
+        mStepView.setCurrentCount(Integer.parseInt(planWalk_QTY), 0);
         tv_isSupport.setText("计步中...");
         setupService();
     }
@@ -97,15 +95,15 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         public void onServiceConnected(ComponentName name, IBinder service) {
             StepService stepService = ((StepService.StepBinder) service).getService();
             //设置初始化数据
-            String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "7000");
-            cc.setCurrentCount(Integer.parseInt(planWalk_QTY), stepService.getStepCount());
+            String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "6000");
+            mStepView.setCurrentCount(Integer.parseInt(planWalk_QTY), stepService.getStepCount());
 
             //设置步数监听回调
             stepService.registerCallback(new UpdateUiCallBack() {
                 @Override
                 public void updateUi(int stepCount) {
-                    String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "7000");
-                    cc.setCurrentCount(Integer.parseInt(planWalk_QTY), stepCount);
+                    String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "6000");
+                    mStepView.setCurrentCount(Integer.parseInt(planWalk_QTY), stepCount);
                 }
             });
         }
@@ -127,12 +125,11 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_set:
-                toastShort("set");
+                toastShort("功能待开发");
                 //startActivity(new Intent(this, SetPlanActivity.class));
                 break;
             case R.id.tv_data:
-                toastShort("data");
-               // startActivity(new Intent(this, HistoryActivity.class));
+                startActivity(new Intent(this, HistroyStepActivity.class));
                 break;
         }
     }

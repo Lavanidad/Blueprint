@@ -45,6 +45,7 @@
     <color name="diy_red2">#cc6f6e</color>
     <color name="diy_gray">#EEEEEE</color>
     <color name="diy_gray2">#999999</color>
+    <color name="diy_gray3">#F5F5F5</color>//非常浅的灰
     <color name="diy_black">#070707</color>
     <color name="diy_black2">#000000</color>
     <color name="diy_white">#ffffff</color>

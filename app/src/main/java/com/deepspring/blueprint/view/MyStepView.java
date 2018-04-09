@@ -3,6 +3,7 @@ package com.deepspring.blueprint.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -75,7 +76,7 @@ public class MyStepView extends View {
         }
 
         /**
-         * 1.绘制总步数的黄色圆弧
+         * 1.绘制总步数的圆弧
          *
          * @param canvas 画笔
          * @param rectF  参考的矩形
@@ -83,7 +84,7 @@ public class MyStepView extends View {
         private void drawArcYellow(Canvas canvas, RectF rectF) {
             Paint paint = new Paint();
             /** 默认画笔颜色，黄色 */
-            paint.setColor(getResources().getColor(R.color.yellow));
+            paint.setColor(getResources().getColor(R.color.diy_gray3));
             /** 结合处为圆弧*/
             paint.setStrokeJoin(Paint.Join.ROUND);
             /** 设置画笔的样式 Paint.Cap.Round ,Cap.SQUARE等分别为圆形、方形*/
@@ -108,7 +109,7 @@ public class MyStepView extends View {
         }
 
         /**
-         * 2.绘制当前步数的红色圆弧
+         * 2.绘制当前步数的圆弧
          */
         private void drawArcRed(Canvas canvas, RectF rectF) {
             Paint paintCurrent = new Paint();
@@ -117,7 +118,7 @@ public class MyStepView extends View {
             paintCurrent.setStyle(Paint.Style.STROKE);//设置填充样式
             paintCurrent.setAntiAlias(true);//抗锯齿功能
             paintCurrent.setStrokeWidth(borderWidth);//设置画笔宽度
-            paintCurrent.setColor(getResources().getColor(R.color.red));//设置画笔颜色
+            paintCurrent.setColor(getResources().getColor(R.color.colorPrimary));//设置画笔颜色
             canvas.drawArc(rectF, startAngle, currentAngleLength, false, paintCurrent);
         }
 
@@ -129,9 +130,9 @@ public class MyStepView extends View {
             vTextPaint.setTextAlign(Paint.Align.CENTER);
             vTextPaint.setAntiAlias(true);//抗锯齿功能
             vTextPaint.setTextSize(numberTextSize);
-            Typeface font = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
+            Typeface font = Typeface.create(Typeface.SERIF, Typeface.ITALIC);
             vTextPaint.setTypeface(font);//字体风格
-            vTextPaint.setColor(getResources().getColor(R.color.red));
+            vTextPaint.setColor(getResources().getColor(R.color.black));
             Rect bounds_Number = new Rect();
             vTextPaint.getTextBounds(stepNumber, 0, stepNumber.length(), bounds_Number);
             canvas.drawText(stepNumber, centerX, getHeight() / 2 + bounds_Number.height() / 2, vTextPaint);
@@ -139,15 +140,15 @@ public class MyStepView extends View {
         }
 
         /**
-         * 4.圆环中心[步数]的文字
+         * 4.圆环中心的文字
          */
         private void drawTextStepString(Canvas canvas, float centerX) {
             Paint vTextPaint = new Paint();
-            vTextPaint.setTextSize(dipToPx(16));
+            vTextPaint.setTextSize(dipToPx(14));
             vTextPaint.setTextAlign(Paint.Align.CENTER);
             vTextPaint.setAntiAlias(true);//抗锯齿功能
-            vTextPaint.setColor(getResources().getColor(R.color.diy_gray));
-            String stepString = "步数";
+            vTextPaint.setColor(getResources().getColor(R.color.diy_gray2));
+            String stepString = "今日步数";
             Rect bounds = new Rect();
             vTextPaint.getTextBounds(stepString, 0, stepString.length(), bounds);
             canvas.drawText(stepString, centerX, getHeight() / 2 + bounds.height() + getFontHeight(numberTextSize), vTextPaint);
