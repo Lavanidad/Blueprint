@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.deepspring.blueprint.R;
@@ -18,8 +17,7 @@ import com.deepspring.blueprint.server.StepService;
 import com.deepspring.blueprint.step.UpdateUiCallBack;
 import com.deepspring.blueprint.utils.SharedPreferencesUtils;
 import com.deepspring.blueprint.view.MyStepView;
-import com.haibin.calendarview.CalendarLayout;
-import com.haibin.calendarview.CalendarView;
+
 
 
 public class StepActivity extends BaseActivity implements View.OnClickListener {

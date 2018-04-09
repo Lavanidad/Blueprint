@@ -22,6 +22,7 @@ import android.widget.Button;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.deepspring.blueprint.R;
+import com.deepspring.blueprint.activity.BodyActivity;
 import com.deepspring.blueprint.activity.HistoryRecordActivity;
 import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
@@ -33,7 +34,7 @@ public class MapFragment extends BaseFragment {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private Toolbar mToolbar;
-    private String[] tabTitle = {"跑步","骑行"};
+    private static final String[] tabTitle = {"跑步","骑行"};
     private FloatingActionButton mFloatButton;
     private boolean fbOpend = false;
 
@@ -81,7 +82,7 @@ public class MapFragment extends BaseFragment {
                                 startActivity(new Intent(getActivity(), HistoryRecordActivity.class));
                                 break;
                             case R.id.body:
-                                toast("跳转");
+                                startActivity(new Intent(getActivity(), BodyActivity.class));
                                 break;
 
                         }

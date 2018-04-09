@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.deepspring.blueprint.fragment.Map.CycleFragment;
 import com.deepspring.blueprint.fragment.Map.RunFragment;
 
-import java.util.List;
 
 public class BaseViewPagerAdapter extends FragmentPagerAdapter {
 

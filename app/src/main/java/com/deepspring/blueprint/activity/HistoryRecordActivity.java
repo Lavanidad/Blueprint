@@ -16,7 +16,6 @@ import com.amap.api.maps.model.LatLng;
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.adapter.DbAdapter;
 import com.deepspring.blueprint.adapter.ShareRecordAdapter;
-import com.deepspring.blueprint.base.BaseActivity;
 import com.deepspring.blueprint.bean.PathRecord;
 
 import java.util.ArrayList;

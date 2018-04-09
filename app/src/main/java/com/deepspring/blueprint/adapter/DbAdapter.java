@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.deepspring.blueprint.bean.BMIBean;
 import com.deepspring.blueprint.bean.PathRecord;
 
 import java.text.SimpleDateFormat;
@@ -119,44 +120,22 @@ public class DbAdapter {
     }
 
 
-    public Cursor getRecordByDate(){
-        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
-        String datestr = format.format(new Date());
-        Log.e("TAG",datestr+"==========================");
-        return db.query(RECORD_TABLE, new String []{KEY_DISTANCE,KEY_DURATION,KEY_SPEED,KEY_LINE,KEY_STRAT,KEY_END,KEY_DATE}, "date LIKE ?", new String[]{"%"+datestr+"%"}, null, null, null);
-
-    }
-
-    public double getSumToday(){
-        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
-        String datestr = format.format(new Date());
-        Cursor mCursor = db.query(RECORD_TABLE, new String []{KEY_DISTANCE,KEY_DURATION,KEY_SPEED,KEY_LINE,KEY_STRAT,KEY_END,KEY_DATE}, "date LIKE ?", new String[]{"%"+datestr+"%"}, null, null, null);
-        double sum = 0;
-        while (mCursor.moveToNext()) {
-            PathRecord record = new PathRecord();
-            double distance = Double.parseDouble(mCursor.getString(mCursor.getColumnIndex(DbAdapter.KEY_DISTANCE)));
-            sum+=distance;
-            Log.e("distance",distance+"ddd");
-        }
-        return  sum;
-    }
-
     public void delete(){
         db.delete("record","date like ?",new String[]{"%07:45:27%"});
     }
 
-//todo bmi
-//    public void updateBmi(BMIBean bean){
-//        db.execSQL("insert into bmi(weight,height,bmi,time) values(?,?,?,?)",
-//                new String[]{bean.getWeight(),bean.getHeight(),bean.getBmi(),bean.getTime()});
-//    }
 
-//    public Cursor getTop10Bmi(){
-//        return db.rawQuery("select * from bmi order by time desc limit 10",null);
-//    }
-//
-//    public void getLatesBmi(){
-//        db.execSQL("insert into bmi(weight,height,bmi,time) values(?,?,?,?)",
-//                new String[]{"100","170","20","1472351171673"});
-//    }
+    public void updateBmi(BMIBean bean){
+        db.execSQL("insert into bmi(weight,height,bmi,time) values(?,?,?,?)",
+                new String[]{bean.getWeight(),bean.getHeight(),bean.getBmi(),bean.getTime()});
+    }
+
+    public Cursor getTop10Bmi(){
+        return db.rawQuery("select * from bmi order by time desc limit 10",null);
+    }
+
+    public void getLatesBmi(){
+        db.execSQL("insert into bmi(weight,height,bmi,time) values(?,?,?,?)",
+                new String[]{"100","170","20","1472351171673"});
+    }
 }

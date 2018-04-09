@@ -85,6 +85,8 @@
             android:name=".activity.ReadyActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.FullScreen" />
+        <activity android:name=".activity.BodyActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".activity.LockActivity"
             android:launchMode="singleTask" />

@@ -1,15 +1,8 @@
 package com.deepspring.blueprint.activity;
 
-import android.app.Service;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+
 import android.graphics.Color;
 import android.os.Build;
-import android.os.IBinder;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -26,14 +19,9 @@ import com.deepspring.blueprint.base.BaseActivity;
 import com.deepspring.blueprint.fragment.DailyFragment;
 import com.deepspring.blueprint.fragment.MapFragment;
 import com.deepspring.blueprint.fragment.UserFragment;
-import com.deepspring.blueprint.server.StepService;
-import com.deepspring.blueprint.step.UpdateUiCallBack;
-
 
 import java.lang.reflect.Field;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Locale;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

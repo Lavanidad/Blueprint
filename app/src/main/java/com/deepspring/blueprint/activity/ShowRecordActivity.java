@@ -2,18 +2,13 @@ package com.deepspring.blueprint.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -28,9 +23,7 @@ import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.base.BaseActivity;
 import com.deepspring.blueprint.bean.PathRecord;
 
-/**
- *
- */
+
 public class ShowRecordActivity extends BaseActivity implements AMap.OnMapLoadedListener {
     private MapView mapView;
     private AMap aMap;
