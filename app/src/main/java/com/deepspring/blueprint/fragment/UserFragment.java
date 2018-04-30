@@ -7,13 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
+import com.deepspring.blueprint.activity.LoginActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 
 public class UserFragment extends Fragment {
 
     private Button mButton;
+    private Button LoginBtn;
 
     public UserFragment() {
         // Required empty public constructor
@@ -30,6 +36,7 @@ public class UserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  EventBus.getDefault().register(this);//在当前界面注册一个订阅者
     }
 
     @Override
@@ -43,8 +50,22 @@ public class UserFragment extends Fragment {
                 startActivity(new Intent(getActivity(),
                        com.amap.api.maps.offlinemap.OfflineMapActivity.class));
             }
-        });//todo 离线下载异常
+        });
+        LoginBtn = rootView.findViewById(R.id.fragment_login);
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
         return rootView;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);//取消注册
     }
 
 }

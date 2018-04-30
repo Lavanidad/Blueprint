@@ -15,9 +15,7 @@ import com.deepspring.blueprint.bean.PathRecord;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *  author:@WangTao
- */
+
 public class DbAdapter {
     private final static String DATABASE_PATH = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/recordPath";
     static final String DATABASE_NAME=DATABASE_PATH+"/"+"record_run.db";

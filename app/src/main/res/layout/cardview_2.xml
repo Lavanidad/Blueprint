@@ -19,7 +19,7 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="13.0dp"
                 android:layout_marginBottom="13.0dp"
-                android:text="待定中"
+                android:text="功能"
                 android:layout_marginStart="16.0dp"/>
 
             <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginTop="8.0dp"
+                    android:layout_marginTop="15.0dp"
                     android:layout_width="20.0dp"
                     android:layout_height="20.0dp"
                     android:background="@android:color/transparent"
@@ -41,17 +41,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
-                    <TextView
+                    <Button
+                        android:id="@+id/data_btn"
+                        android:gravity="center_vertical"
+                        android:background="#ffffff"
                         android:textColor="#de000000"
-                        android:text="待定中"
-                        android:textSize="16.0sp"
+                        android:text="上传数据"
+                        android:textSize="18.0sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_marginTop="5.0dp"
-                        android:text="待定中"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        />
                 </LinearLayout>
             </LinearLayout>
 
@@ -90,11 +89,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         />
-                    <!--todo 修改<TextView-->
-                        <!--android:layout_marginTop="5.0dp"-->
-                        <!--android:text="离线地图"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content" />-->
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

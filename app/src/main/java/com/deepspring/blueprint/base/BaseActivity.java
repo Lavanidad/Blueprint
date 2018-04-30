@@ -2,6 +2,7 @@ package com.deepspring.blueprint.base;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drawer);
         initViews();
         initPermissions();
-        ZXingLibrary.initDisplayOpinion(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     private void initPermissions() {

@@ -6,6 +6,7 @@ import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -47,9 +48,8 @@ import java.util.Date;
 /**
  * 不需要drawer，直接继承AC
  * todo: 优先级1：bug 右滑解锁失效 颜色失效 图标大小异常 该功能需要重做；
- * todo: 优先级2：完善运动记录页面,添加查询附近共享单车。添加第一页的布局
- * todo: 优先级3：计步页面处理完，Service Notification 权限 重做
- * todo: 优先级4：记录页面和列表页面，back逻辑混乱
+ * todo: 优先级3：Service Notification 8.0为配置 需要添加
+ * todo: 优先级4：轨迹记录页面和列表页面，back逻辑混乱 检查相关逻辑
  */
 public class RunActivity extends AppCompatActivity implements LocationSource,
         AMapLocationListener, View.OnClickListener{
@@ -64,7 +64,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private long starttime;
     private long endtime;
     private DbAdapter DbHepler;
-    private ImageView iv_lock;
     private ImageView iv_pause, iv_continue, iv_end;
     private TextView tv_speed,tv_time,tv_distance;
 
@@ -80,6 +79,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
         mapView = findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
@@ -98,7 +98,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         iv_pause = findViewById(R.id.iv_pause);
         iv_continue = findViewById(R.id.iv_continue);
         iv_end = findViewById(R.id.iv_end);
-        iv_lock = findViewById(R.id.iv_lock);
 
         tv_speed = findViewById(R.id.tv_speed);
         tv_distance = findViewById(R.id.tv_distance);
@@ -107,7 +106,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         iv_pause.setOnClickListener(this);
         iv_continue.setOnClickListener(this);
         iv_end.setOnClickListener(this);
-        iv_lock.setOnClickListener(this);
     }
 
     /**
@@ -135,12 +133,12 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
 
 
     /**
-     * trace属性 todo 样式可调试 ( 优先级2.5 )
+     * trace属性
      */
     private void initpolyline() {
         mPolyoptions = new PolylineOptions();
         mPolyoptions.width(15f);
-        mPolyoptions.color(Color.BLUE);
+        mPolyoptions.color(R.color.colorPrimary);
     }
 
     @Override
@@ -191,7 +189,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     }
 
     /**
-     * 官方demo todo: 需要使用算法筛选( 优先级1.5 )
+     * 官方demo
      */
     private void startlocation() {
         if (mlocationClient == null) {
@@ -285,7 +283,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                 }
                 record.addpoint(mylocation);
                 mPolyoptions.add(mylocation);
-
                 redrawline();
                 index++;
             } else {
@@ -353,7 +350,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                 builder.create().show();
                 break;
             case R.id.iv_lock:
-                startActivity(new Intent(this,LockActivity.class));
+                //startActivity(new Intent(this,LockActivity.class));
                 break;
             default:
                 break;

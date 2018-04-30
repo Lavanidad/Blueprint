@@ -41,8 +41,6 @@ public class LockActivity extends BaseActivity{
         if(x>iv_touch.getX() && x<deltX && y>iv_touch.getY() && y<deltY){
             return true;
         }
-        Log.e("TAG","deltX:"+deltX+",deltY:"+deltY);
-        Log.e("TAG","X:"+iv_touch.getX()+",Y:"+iv_touch.getY());
         return  false;
     }
 

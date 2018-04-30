@@ -2,6 +2,7 @@ package com.deepspring.blueprint.activity;
 
 
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -72,6 +73,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         db = new DbAdapter(this);
         db.open();
         initViews();

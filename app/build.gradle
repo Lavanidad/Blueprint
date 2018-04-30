@@ -34,12 +34,27 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.android.support:cardview-v7:28.0.0-alpha1'
     compile 'com.orhanobut:logger:1.8'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'//(常用)
+    //bmob-push：Bmob的推送包
+    compile 'cn.bmob.android:bmob-push:0.8'
+    //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk
+    compile 'cn.bmob.android:bmob-im:2.0.5@aar'
+    compile 'cn.bmob.android:bmob-sdk:3.4.7-aar'
+    //bmob-sms ：Bmob单独为短信服务提供的包
+    compile 'cn.bmob.android:bmob-sms:1.0.1'
+    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
+    compile 'cn.bmob.android:http-legacy:1.0'//(常用)
+
     compile 'com.github.edsergeev:text-fab:1.0.0'
     compile 'com.github.jaychou2012:SwitchLayout:1.0.0.0'//淡入淡出
     compile 'com.cocosw:bottomsheet:1.+@aar'
     compile 'com.google.android.gms:play-services:8.1.0'
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+   // compile 'io.reactivex:rxjava:1.0.14'
+   // compile 'io.reactivex:rxandroid:1.0.1'
     //compile 'com.haibin:calendarview:3.2.4'
 
 }
