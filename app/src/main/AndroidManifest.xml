@@ -60,14 +60,19 @@
             android:value="91d4d29bd7fda9b586f45593972a2215" />
 
         <activity
-            android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activity.WelcomeActivity"
+            android:theme="@style/AppTheme.FullScreen"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
         </activity>
         <activity
             android:name=".activity.step.StepActivity"

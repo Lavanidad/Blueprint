@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mBottomNavigationBar;
 
-    private static int LAST_SELECTED_POSITION = 0;
+    private final static int LAST_SELECTED_POSITION = 1;
     private DailyFragment mDailyFragment = null;
     private MapFragment mMapFragment = null;
     private UserFragment mUserFragment = null;
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         private void setDefaultFragment() {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.replace(R.id.main_container, DailyFragment.newInstance("发现"));
+            transaction.replace(R.id.main_container, MapFragment.newInstance("运动"));
             transaction.commit();
         }
 
