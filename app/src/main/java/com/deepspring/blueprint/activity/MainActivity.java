@@ -26,7 +26,7 @@ import java.lang.reflect.Field;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//todo-list   2、map 3、图形优化，bitmap压缩 4、第一页
+
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     @BindView(R.id.activity_container)
@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                     .setMode(BottomNavigationBar.MODE_SHIFTING)
                     .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                     .initialise();//end
-            setDefaultFragment();//设置默认
+            setDefaultFragment();
         }
 
         private void setDefaultFragment() {
@@ -120,7 +120,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 default:
                     break;
             }
-            transaction.commit();// 事务提交
+            transaction.commit();
         }
 
         /**

@@ -28,7 +28,7 @@ import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
 
-
+//todo-list fragment重复创建
 public class MapFragment extends BaseFragment {
 
     private TabLayout mTabLayout;
@@ -56,6 +56,7 @@ public class MapFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         initViews(rootView);
+        //Log.d("mapFragment","onCreateView");
         initGps();
         Button mStepBtn = rootView.findViewById(R.id.step_countBtn);
         mStepBtn.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +116,7 @@ public class MapFragment extends BaseFragment {
             });
             dialog.show();
         } else {
-            Log.d("test","gps");
+            Log.d("GPS","GPS模块已开启");
         }
     }
 
@@ -157,21 +158,6 @@ public class MapFragment extends BaseFragment {
         animator.setDuration(500);
         animator.start();
         fbOpend = false;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
     }
 
 }

@@ -339,12 +339,14 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                         Intent intent = new Intent(getBaseContext(),ShowRecordActivity.class);
                         intent.putExtra("record_item",today_record);
                         startActivity(intent);
+                        RunActivity.this.finish();
                     }
                 });
                 builder.setNegativeButton("继续", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         isPause = false;
+                        endAnimator();
                     }
                 });
                 builder.create().show();

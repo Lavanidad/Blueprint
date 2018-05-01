@@ -100,8 +100,10 @@
             android:launchMode="singleTask"/>
         <activity android:name=".activity.ReadyScanActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.SignUpActivity"/>
+        <activity android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.SignUpActivity"
+            android:launchMode="singleTop"/>
 
 
         <service android:name="com.amap.api.location.APSService" />
