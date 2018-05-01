@@ -42,7 +42,7 @@ public class ShowRecordActivity extends BaseActivity implements AMap.OnMapLoaded
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mapView.onCreate(savedInstanceState);// 此方法必须重写
+        mapView.onCreate(savedInstanceState);
         initViews();
         init();
     }

@@ -25,9 +25,10 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <!-- 全屏样式 -->
+    <!-- 启动屏样式 -->
     <style name="AppTheme.FullScreen" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/welcome2</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
