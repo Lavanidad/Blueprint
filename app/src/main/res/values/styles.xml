@@ -32,6 +32,12 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <!-- 单纯页面全屏样式 -->
+    <style name="AppTheme.OnlyFullScreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

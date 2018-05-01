@@ -2,7 +2,6 @@ package com.deepspring.blueprint.activity;
 
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -12,7 +11,9 @@ import android.view.WindowManager;
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.base.BaseActivity;
 
-
+/**
+ * todo 引导页布局下移
+ */
 public class WelcomeActivity extends BaseActivity {
 
     @Override

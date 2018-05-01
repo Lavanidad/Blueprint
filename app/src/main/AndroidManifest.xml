@@ -88,7 +88,7 @@
         <activity
             android:name=".activity.ReadyActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.FullScreen" />
+            android:theme="@style/AppTheme.OnlyFullScreen" />
         <activity android:name=".activity.BodyActivity"
             android:launchMode="singleTask"/>
         <activity

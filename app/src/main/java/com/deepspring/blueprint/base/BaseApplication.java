@@ -2,6 +2,7 @@ package com.deepspring.blueprint.base;
 
 
 import android.app.Application;
+import android.view.WindowManager;
 
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 

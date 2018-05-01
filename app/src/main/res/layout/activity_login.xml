@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_toRightOf="@id/viewPwd"
                 android:background="@null"
                 android:drawablePadding="5dp"
@@ -193,6 +193,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="18dp"
+                android:translationZ="5dp"
                 android:src="@drawable/login_btn_weixin" />
 
             <ImageView
@@ -200,6 +201,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="18dp"
+                android:translationZ="5dp"
                 android:src="@drawable/login_btn_qq" />
 
             <ImageView
@@ -207,6 +209,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="18dp"
+                android:translationZ="5dp"
                 android:src="@drawable/login_btn_weibo" />
 
             <ImageView
@@ -214,6 +217,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="18dp"
+                android:translationZ="5dp"
                 android:src="@drawable/login_btn_taobao" />
         </LinearLayout>
 
