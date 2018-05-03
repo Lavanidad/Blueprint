@@ -74,7 +74,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     private GoogleApiClient client;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,9 +107,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         iv_end.setOnClickListener(this);
     }
 
-    /**
-     * 初始化地图
-     */
     private void init(){
         if(aMap == null){
             aMap = mapView.getMap();
@@ -118,10 +114,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         }
     }
 
-
-    /**
-     * 设置地图属性
-     */
     private void setUpMap() {
         aMap.setLocationSource(this);// 设置定位监听
         aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
@@ -132,9 +124,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     }
 
 
-    /**
-     * trace属性
-     */
     private void initpolyline() {
         mPolyoptions = new PolylineOptions();
         mPolyoptions.width(15f);
@@ -174,7 +163,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     @Override
     public void activate(OnLocationChangedListener onLocationChangedListener) {
         mListener = onLocationChangedListener;
-        Log.e("TAG", "active start location");
         startlocation();
     }
 
@@ -217,9 +205,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         }
     }
 
-    /**
-     * 开启计时线程,处理定时器
-     */
+
     private int second;
     private Handler handler = new Handler(){
         @Override
@@ -249,9 +235,7 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
         }
     });
 
-    /**
-     * 距离
-     */
+
     private int index = 0;
     private double distance = 0.0;
     @Override
@@ -262,7 +246,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                 LatLng mylocation = new LatLng(amapLocation.getLatitude(),
                         amapLocation.getLongitude());
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(mylocation));
-                //更新distance并且显示到textview
                 int size = record.getPathline().size();
                 if(size>1){
                     LatLng firstpoint = record.getPathline().get(size-2);
@@ -272,7 +255,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                                 + AMapUtils.calculateLineDistance(firstpoint,
                                 secoundpoint);
                     }
-                    //显示
                     DecimalFormat df = new DecimalFormat("0.000");
                     tv_distance.setText(df.format(distance/1000));
                     if(distance < Double.MIN_VALUE || second/distance>1200){
@@ -316,12 +298,10 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_pause:
-                //开启动画,停止计时，停止画线
                 isPause = true;
                 startAnimator();
                 break;
             case R.id.iv_continue:
-                //关闭动画，继续计时，继续划线
                 isPause = false;
                 endAnimator();
                 break;
@@ -352,7 +332,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
                 builder.create().show();
                 break;
             case R.id.iv_lock:
-                //startActivity(new Intent(this,LockActivity.class));
                 break;
             default:
                 break;
@@ -465,11 +444,6 @@ public class RunActivity extends AppCompatActivity implements LocationSource,
             public void onAnimationRepeat(Animator animation) {
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
     }
 
     @Override

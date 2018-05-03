@@ -1,8 +1,10 @@
 package com.deepspring.blueprint.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
+import com.deepspring.blueprint.activity.ContentActivity;
 import com.deepspring.blueprint.adapter.TitleAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
 import com.deepspring.blueprint.bean.NewsBean;
@@ -73,12 +76,14 @@ public class DailyFragment extends BaseFragment {
         final View rootView = inflater.inflate(R.layout.fragment_daily, container, false);
         initViews(rootView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            //Intent intent = new Intent(context, ContentActivity.class);
+            Intent intent = new Intent(getActivity(), ContentActivity.class);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Title title = titleList.get(position);
-                toast("itemclicked");
-                //startActivity(intent);
+                Bundle bundle=new Bundle();
+                bundle.putString("uri",title.getUri());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

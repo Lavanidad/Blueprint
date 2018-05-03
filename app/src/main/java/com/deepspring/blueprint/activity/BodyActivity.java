@@ -88,19 +88,19 @@ public class BodyActivity extends AppCompatActivity implements View.OnClickListe
         if(mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
         }
-        chart = (LineChartView) findViewById(R.id.linechart_weight);
+        chart = findViewById(R.id.linechart_weight);
         generateValues();
         chart.setViewportCalculationEnabled(false);
         resetViewport();
 
-        iv_bmi_level = (ImageView) findViewById(R.id.iv_bmi_level);
-        iv_weight_how_change = (ImageView) findViewById(R.id.iv_weight_how_change);
-        tv_update_time = (TextView) findViewById(R.id.tv_update_time);
-        tv_bmi_level = (TextView) findViewById(R.id.tv_bmi_level);
-        tv_bmi_value = (TextView) findViewById(R.id.tv_bmi_value);
-        tv_height = (TextView) findViewById(R.id.tv_height);
-        tv_weight = (TextView) findViewById(R.id.tv_weight);
-        tv_delt_weight = (TextView) findViewById(R.id.tv_delt_weight);
+        iv_bmi_level = findViewById(R.id.iv_bmi_level);
+        iv_weight_how_change = findViewById(R.id.iv_weight_how_change);
+        tv_update_time = findViewById(R.id.tv_update_time);
+        tv_bmi_level = findViewById(R.id.tv_bmi_level);
+        tv_bmi_value = findViewById(R.id.tv_bmi_value);
+        tv_height = findViewById(R.id.tv_height);
+        tv_weight = findViewById(R.id.tv_weight);
+        tv_delt_weight = findViewById(R.id.tv_delt_weight);
         lastWeight = tv_weight.getText().toString();
         initListener();
         resetUI();
@@ -148,7 +148,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnClickListe
              List<PointValue> values = new ArrayList<PointValue>();
              for (int j = 0; j < dataList.size(); ++j) {
                  values.add(new PointValue(j, dataList.get(j)));
-                 Log.e("TAG",dataList.get(j)+"dataList  ---");
              }
 
              Line line = new Line(values);
@@ -169,7 +168,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnClickListe
          if (hasAxes) {
              Axis axisX = new Axis();
              Axis axisY = new Axis().setHasLines(true);
-//           axisY.setMaxLabelChars(200);
              if (hasAxesNames) {
                  axisX.setName("最近"+(dataList!=null?dataList.size():0)+"天");
                  axisY.setName("体重(单位：斤)");

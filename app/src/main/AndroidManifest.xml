@@ -104,6 +104,7 @@
             android:launchMode="singleTask"/>
         <activity android:name=".activity.SignUpActivity"
             android:launchMode="singleTop"/>
+        <activity android:name=".activity.ContentActivity"/>
 
 
         <service android:name="com.amap.api.location.APSService" />
