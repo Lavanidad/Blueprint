@@ -42,7 +42,7 @@
     <color name="tab_text_normal">#66ffffff</color>
 
     <color name="diy_red">#DB3937</color>
-    <color name="diy_red2">#cc6f6e</color>
+    <color name="diy_red2">#F54343</color>
     <color name="diy_gray">#EEEEEE</color>
     <color name="diy_gray2">#999999</color>
     <color name="diy_gray3">#F5F5F5</color>//非常浅的灰
@@ -50,7 +50,6 @@
     <color name="diy_black2">#000000</color>
     <color name="diy_white">#ffffff</color>
     <color name="diy_white_bg">#F0F0F0</color>
-
     <color name="comment_name">#6682BA</color>
     <color name="comment_floor_bg">#F9F9ED</color>
     <color name="colorLogin">#0980C3</color>
