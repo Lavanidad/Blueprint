@@ -33,7 +33,7 @@ import okhttp3.Response;
 import static com.google.android.gms.internal.zzid.runOnUiThread;
 
 /**
- * todo list 1、内容页标题栏红色 2、banner样式设计 3、加载速度优化（fragment重复创建问题
+ * todo list  2、banner样式设计 3、加载速度优化（fragment重复创建问题
  */
 public class DailyFragment extends BaseFragment {
 

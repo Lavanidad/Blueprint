@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,21 +14,23 @@ import android.widget.EditText;
 
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.base.BaseActivity;
+import com.deepspring.blueprint.fragment.UserFragment;
 
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     private EditText etusername, etpassword;
     private Button registerBtn, loginBtn;
-    private Boolean isLogin = false;
+
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -45,7 +48,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         registerBtn.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -58,7 +60,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     public void done(BmobUser bmobUser, cn.bmob.v3.exception.BmobException e) {
                         if(e==null){
                             toastShort(bmobUser.getUsername()+"登录成功");
-                            isLogin = true;
+
+                            LoginActivity.this.finish();
 
                         }else {
                             toastShort("unknowError");

@@ -17,9 +17,7 @@ import com.deepspring.blueprint.bean.Title;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/5/3 0003.
- */
+
 
 public class TitleAdapter extends ArrayAdapter<Title> {
     private int resourceId;

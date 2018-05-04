@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="30dp"
-    android:layout_marginTop="25dp"
+    android:layout_marginTop="45dp"
     android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/iv_userinfo_pic"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_centerVertical="true"
         android:src="@mipmap/login_btn_qq" />
 
@@ -28,9 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Lavanidad"
+            android:text="您已登录"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
 </RelativeLayout>

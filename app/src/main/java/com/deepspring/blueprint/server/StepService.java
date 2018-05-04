@@ -269,7 +269,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 更新步数通知 //TODO
+     * 更新步数通知
      */
     private void updateNotification() {
         //设置点击跳转
@@ -316,7 +316,6 @@ public class StepService extends Service implements SensorEventListener {
      */
     private void remindNotify() {
 
-        //todo 设置点击跳转
         Intent hangIntent = new Intent(this, StepActivity.class);
         PendingIntent hangPendingIntent = PendingIntent.getActivity(this, 0, hangIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 

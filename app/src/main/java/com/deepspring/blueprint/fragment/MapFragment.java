@@ -28,7 +28,7 @@ import com.deepspring.blueprint.activity.step.StepActivity;
 import com.deepspring.blueprint.adapter.BaseViewPagerAdapter;
 import com.deepspring.blueprint.base.BaseFragment;
 
-//todo-list fragment重复创建
+
 public class MapFragment extends BaseFragment {
 
     private TabLayout mTabLayout;
