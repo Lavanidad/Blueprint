@@ -4,7 +4,6 @@ package com.deepspring.blueprint.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +31,7 @@ import okhttp3.Response;
 
 import static com.google.android.gms.internal.zzid.runOnUiThread;
 
-/**
- * todo list  2、banner样式设计 3、加载速度优化（fragment重复创建问题
- */
+
 public class DailyFragment extends BaseFragment {
 
     private List<Title> titleList = new ArrayList<Title>();

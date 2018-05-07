@@ -120,7 +120,6 @@ public class ShowRecordActivity extends BaseActivity implements AMap.OnMapLoaded
                 e.printStackTrace();
             }
         }else {
-           //logger
         }
     }
 
