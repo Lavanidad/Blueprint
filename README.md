@@ -1,5 +1,6 @@
 # 蓝图运动App
 ![](https://img.shields.io/badge/version-v0.0.1-green.svg)
+![](https://img.shields.io/badge/Android%20Studio-3.0-blue.svg)
 ![](https://img.shields.io/badge/Android-5.0%20or%20above-green.svg)
 
 基于Material Design设计开发的运动App。主要实现运动信息展示，轨迹记录，步数统计，后台登录注册等功能。代码开源仅用于交流学习。
