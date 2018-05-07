@@ -3,6 +3,7 @@ package com.deepspring.blueprint.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.activity.LoginActivity;
+import com.deepspring.blueprint.bean.LoginSuccessdEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -43,6 +45,7 @@ public class UserFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);//在当前界面注册一个订阅者
+
     }
 
     //用于接收传MessageEvent这个类的消息
@@ -72,18 +75,22 @@ public class UserFragment extends Fragment {
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
-        changeView();
         return rootView;
     }
 
-    public void changeView(){
-        if(isLogin = true){
+
+    @Subscribe          //订阅事件FirstEvent
+    public  void onEventMainThread(LoginSuccessdEvent event){
+        Boolean msg=event.getMsg();
+        isLogin = msg;
+        if(isLogin != false){
             unLoginView.setVisibility(View.GONE);
             LoginView.setVisibility(View.VISIBLE);
         }else {
             unLoginView.setVisibility(View.VISIBLE);
             LoginView.setVisibility(View.GONE);
         }
+        Log.i("isLogin in uf",""+msg);
     }
 
     @Override

@@ -11,11 +11,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.deepspring.blueprint.R;
 import com.deepspring.blueprint.base.BaseActivity;
+import com.deepspring.blueprint.bean.LoginSuccessdEvent;
 import com.deepspring.blueprint.fragment.UserFragment;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
@@ -35,6 +40,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+        EventBus.getDefault().register(this);
         initViews();
     }
     @Override
@@ -46,6 +52,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         loginBtn.setOnClickListener(this);
         registerBtn = (Button) findViewById(R.id.btn_signup);
         registerBtn.setOnClickListener(this);
+    }
+
+    @Subscribe          //订阅事件FirstEvent
+    public void onEventMainThread(LoginSuccessdEvent event){
+        Log.i("TAG","LoginSuccessdEvent");
+        LoginActivity.this.finish();//收到订阅事件之后关闭当前界面
+        Toast.makeText(this, "finish", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -60,7 +73,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     public void done(BmobUser bmobUser, cn.bmob.v3.exception.BmobException e) {
                         if(e==null){
                             toastShort(bmobUser.getUsername()+"登录成功");
-
+                            EventBus.getDefault().post(new LoginSuccessdEvent(true));
                             LoginActivity.this.finish();
 
                         }else {
@@ -74,5 +87,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
