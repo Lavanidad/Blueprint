@@ -1,1 +1,33 @@
-# 蓝图
+# 蓝图运动App
+![](https://img.shields.io/badge/version-v0.0.1-green.svg)
+![](https://img.shields.io/badge/Android-5.0%20or%20above-green.svg)
+
+基于Material Design设计开发的运动App，用于交流学习。
+### 下载
+[应用体验](http://www.firhq.com/)(暂时关闭下载)
+### 预览
+<img src="./screenshot/main.png" width="200px"/>&nbsp;&nbsp;<img src="./screenshot/map.png" width="200px"/>&nbsp;&nbsp;
+<img src="./screenshot/scan.png" width="200px"/></br>
+<img src="./screenshot/step.png" width="200px"/>&nbsp;&nbsp;<img src="./screenshot/login.png" width="200px"/>
+
+
+### Todo-List
+- [ ] 记录页Toolbar back点击失效
+- [ ] Android O Notification适配
+- [ ] 第三方登录还需要完善
+</br></br>![](https://img.shields.io/badge/version-v0.1.0-green.svg)
+### 联系：
+项目需要完善的地方还有很多，如有BUG或者更好的建议欢迎提出
+* [issue](https://github.com/Lavanidad/Blueprint/issues)
+* [微博](https://weibo.com/5305694609/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1)<br>
+* mail: imdeepspring@gmail.com
+
+### 第三方：
+* [`Okhttp`](https://github.com/square/okhttp)
+* [`ZXing`](https://github.com/yipianfengye/android-zxingLibrary)
+* [`Gson`](https://github.com/google/gson)
+* [`Butterknife`](https://github.com/JakeWharton/butterknife)
+* [`Glide`](https://github.com/bumptech/glide)
+* [`EventBus`](https://github.com/greenrobot/EventBus)
+* [`Logger`](https://github.com/orhanobut/logger)
+
