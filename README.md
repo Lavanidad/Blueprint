@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/version-v0.0.1-green.svg)
 ![](https://img.shields.io/badge/Android-5.0%20or%20above-green.svg)
 
-基于Material Design设计开发的运动App，用于交流学习。
+基于Material Design设计开发的运动App。主要实现运动信息展示，轨迹记录，步数统计，后台登录注册等功能。代码开源仅用于交流学习。
 ### 下载
 [应用体验](http://www.firhq.com/)(暂时关闭下载)
 ### 预览
@@ -30,4 +30,9 @@
 * [`Glide`](https://github.com/bumptech/glide)
 * [`EventBus`](https://github.com/greenrobot/EventBus)
 * [`Logger`](https://github.com/orhanobut/logger)
+
+### 参考资料：
+* [`计步开发`](https://www.jianshu.com/p/5d57f7fd84fa)
+* [`地图开发`](https://blog.csdn.net/i_do_can/article/details/50571657)
+* [`大神博客待整理`](https://blog.csdn.net/)
 
