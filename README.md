@@ -7,7 +7,7 @@
 ### 下载
 [应用体验](http://www.firhq.com/)(暂时关闭下载)
 ### 预览
-<img src="./screenshot/main.png" width="200px"/>&nbsp;&nbsp;<img src="./screenshot/map.png" width="200px"/>&nbsp;&nbsp;
+<img src="./screenshot/main.png" width="200px"/>&nbsp;&nbsp;
 <img src="./screenshot/scan.png" width="200px"/></br>
 <img src="./screenshot/step.png" width="200px"/>&nbsp;&nbsp;<img src="./screenshot/login.png" width="200px"/>
 
